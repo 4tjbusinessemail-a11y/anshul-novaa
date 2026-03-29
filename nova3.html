@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA Beats - Premium Audio Technology</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: #333;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        .logo::before {
+            content: "🎧";
+            font-size: 2rem;
+            animation: rotate 4s linear infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: #e74c3c;
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-links a:hover::after { width: 100%; }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.9), rgba(155, 89, 182, 0.8));
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-text h1 .pulse-text {
+            background: linear-gradient(45deg, #f39c12, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+        
+        .hero-text h1 .m9-text {
+            display: block;
+            font-size: 3.5rem;
+            margin-top: 0.5rem;
+            animation: slideInFromRight 1.2s ease-out 0.5s both;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            animation: typewriter 3s steps(80) 1s both;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+        
+        .btn {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            color: white;
+            box-shadow: 0 15px 35px rgba(231, 76, 60, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(231, 76, 60, 0.6);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-5px);
+            border-color: white;
+        }
+        
+        .hero-image {
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .headset-img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));
+            border-radius: 20px;
+            animation: slideInFromLeft 1.2s ease-out 0.8s both;
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: floatParticle 6s linear infinite;
+        }
+        
+        /* Welcome Section */
+        .welcome {
+            padding: 120px 0;
+            background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            position: relative;
+            color: white;
+        }
+        
+        .welcome::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 73, 94, 0.8));
+        }
+        
+        .welcome-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .welcome-text h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInFromBottom 1s ease-out;
+        }
+        
+        .welcome-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            animation: fadeInSlideUp 1s ease-out 0.3s both;
+        }
+        
+        .tech-highlight {
+            color: #3498db;
+            font-weight: 700;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .welcome-visual {
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 3rem;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: slideInFromRight 1s ease-out 0.5s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+        
+        .sound-wave {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 8px;
+            height: 120px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .wave-bar {
+            width: 6px;
+            background: linear-gradient(to top, #3498db, #2ecc71);
+            border-radius: 3px;
+            animation: waveAnimation 1.5s ease-in-out infinite;
+        }
+        
+        .wave-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 70%; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 90%; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 50%; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 100%; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 60%; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 80%; animation-delay: 0.6s; }
+        
+        /* Categories */
+        .categories {
+            padding: 120px 0;
+            background: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            position: relative;
+        }
+        
+        .categories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(142, 68, 173, 0.9), rgba(74, 144, 226, 0.8));
+        }
+        
+        .categories-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .categories h2 {
+            text-align: center;
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: textSlideIn 1s ease-out;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .category-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .category-card:hover::before {
+            left: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover .category-img {
+            transform: scale(1.05);
+        }
+        
+        .category-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+            animation: slideInFromBottom 0.5s ease-out;
+        }
+        
+        .category-card p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        /* Help Section */
+        .help {
+            padding: 120px 0;
+            background: url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            position: relative;
+        }
+        
+        .help::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(230, 126, 34, 0.9), rgba(231, 76, 60, 0.8));
+        }
+        
+        .help-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .help-text {
+            color: white;
+        }
+        
+        .help-text h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: bounceInLeft 1s ease-out;
+        }
+        
+        .help-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            animation: fadeInSlideUp 1s ease-out 0.3s both;
+        }
+        
+        .help-image {
+            position: relative;
+            animation: slideInFromRight 1s ease-out 0.5s both;
+        }
+        
+        .help-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .help-img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: #3498db;
+            font-size: 1.3rem;
+            font-weight: 700;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        .footer-section p {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Animations */
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, rgba(52, 152, 219, 0.9), rgba(155, 89, 182, 0.8)); }
+            50% { background: linear-gradient(135deg, rgba(155, 89, 182, 0.9), rgba(52, 152, 219, 0.8)); }
+        }
+        
+        @keyframes textGlow {
+            from { text-shadow: 0 0 20px rgba(243, 156, 18, 0.5); }
+            to { text-shadow: 0 0 30px rgba(231, 76, 60, 0.8); }
+        }
+        
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInFromBottom {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes waveAnimation {
+            0%, 100% { height: 20%; }
+            50% { height: 100%; }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        @keyframes textSlideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounceInLeft {
+            0% { opacity: 0; transform: translateX(-100px); }
+            60% { opacity: 1; transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content, .welcome-content, .help-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-text h1 { font-size: 3rem; }
+            .hero-text h1 .m9-text { font-size: 2.5rem; }
+            .welcome-text h2, .help-text h2, .categories h2 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container { padding: 0 15px; }
+        }
+        
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">NOVA Beats</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s; width: 4px; height: 4px;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 1s; width: 6px; height: 6px;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 2s; width: 3px; height: 3px;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 3s; width: 5px; height: 5px;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 4s; width: 4px; height: 4px;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s; width: 6px; height: 6px;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 1.5s; width: 3px; height: 3px;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 2.5s; width: 5px; height: 5px;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 3.5s; width: 4px; height: 4px;"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>
+                        The <span class="pulse-text">Pulse</span>
+                        <span class="m9-text">M9 Headset</span>
+                    </h1>
+                    <p>Experience revolutionary audio technology with cutting-edge design and unparalleled sound quality that transforms your listening experience.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                        <a href="#" class="btn btn-secondary">Shop All</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium M9 Headset" class="headset-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="welcome animate-on-scroll" id="about">
+        <div class="container">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h2>WELCOME TO<br>TOMORROW</h2>
+                    <p>We're proud to unveil our latest breakthrough in technology: the all-new <span class="tech-highlight">TCH</span>. Engineered for performance, designed with precision, and built for the future. TCH represents a bold step forward in intelligent technology. Equipped with cutting-edge architecture and powered by the latest advancements in AI connectivity, we anticipate the demands of tomorrow.</p>
+                </div>
+                <div class="welcome-visual">
+                    <div class="sound-wave">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories animate-on-scroll" id="products">
+        <div class="container">
+            <div class="categories-content">
+                <h2>Explore Categories</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Phone Accessories" class="category-img">
+                        <h3>PHONES & ACCESSORIES</h3>
+                        <p>Get the high-quality phone accessories you need for optimal performance and style</p>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Computer Equipment" class="category-img">
+                        <h3>COMPUTER EQUIPMENT</h3>
+                        <p>Professional-grade computer equipment for all your computing and productivity needs</p>
+                    </div>
+                    <div class="category-card">
+                        <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tech Accessories" class="category-img">
+                        <h3>MISCELLANEOUS ITEMS</h3>
+                        <p>We have everything you need for your complete tech setup and modern lifestyle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="help animate-on-scroll">
+        <div class="container">
+            <div class="help-content">
+                <div class="help-text">
+                    <h2>NEED HELP?</h2>
+                    <p>Faulty phone battery? Slow laptop? We have in-house tech experts who can assist you with any technical issues you might encounter.</p>
+                    <a href="#" class="btn btn-primary">Visit us in store!</a>
+                </div>
+                <div class="help-image">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tech Support" class="help-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section animate-on-scroll">
+                    <h3>MAIN OFFICE</h3>
+                    <p>📍 54, Galaxy Tower<br>Ram Nagar, Delhi<br>India</p>
+                    <p>📞 +91 9455273315</p>
+                    <p>✉️ info@novabeats.com</p>
+                </div>
+                <div class="footer-section animate-on-scroll">
+                    <h3>OUR LOCATIONS</h3>
+                    <p>🏢 A1 - Rampur St<br>Panipat City, Haryana, India<br>Pin - 132103</p>
+                    <p>🕒 Mon-Sat: 9:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 6:00 PM</p>
+                </div>
+                <div class="footer-section animate-on-scroll">
+                    <h3>SOCIAL PRESENCE</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">📘</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="Twitter">🐦</a>
+                        <a href="#" title="LinkedIn">💼</a>
+                    </div>
+                    <p>🌐 www.novabeats.com</p>
+                    <p>📧 support@novabeats.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NOVA Beats. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling with easing
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced header scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(255,255,255,0.98)';
+                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+            
+            // Hide/show header on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Dynamic particle generation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.width = (Math.random() * 4 + 2) + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            
+            const particlesContainer = document.querySelector('.particles');
+            if (particlesContainer) {
+                particlesContainer.appendChild(particle);
+                
+                // Remove particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 8000);
+            }
+        }
+
+        // Generate particles periodically
+        setInterval(createParticle, 2000);
+
+        // Text animation for hero section
+        function animateText() {
+            const pulseText = document.querySelector('.pulse-text');
+            if (pulseText) {
+                setInterval(() => {
+                    pulseText.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        pulseText.style.transform = 'scale(1)';
+                    }, 200);
+                }, 3000);
+            }
+        }
+
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            animateText();
+            
+            // Staggered animation for category cards
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+            
+            // Add hover sound effect (visual feedback)
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Mobile menu toggle (for future enhancement)
+        const createMobileMenu = () => {
+            const nav = document.querySelector('nav');
+            const menuBtn = document.createElement('button');
+            menuBtn.className = 'mobile-menu-btn';
+            menuBtn.innerHTML = '☰';
+            menuBtn.style.display = 'none';
+            menuBtn.style.background = 'none';
+            menuBtn.style.border = 'none';
+            menuBtn.style.fontSize = '1.5rem';
+            menuBtn.style.color = '#2c3e50';
+            menuBtn.style.cursor = 'pointer';
+            
+            nav.appendChild(menuBtn);
+            
+            // Show mobile menu button on small screens
+            const checkScreenSize = () => {
+                if (window.innerWidth <= 768) {
+                    menuBtn.style.display = 'block';
+                } else {
+                    menuBtn.style.display = 'none';
+                }
+            };
+            
+            window.addEventListener('resize', checkScreenSize);
+            checkScreenSize();
+        };
+
+        createMobileMenu();
+
+        // Smooth reveal animation for footer sections
+        const footerSections = document.querySelectorAll('.footer-section');
+        footerSections.forEach((section, index) => {
+            section.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+                
